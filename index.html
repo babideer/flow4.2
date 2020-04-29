@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    function validateEmail() {
+      var text = document.forms["anything"]["email"].value;
+      // sørger for at e-mail strukturen er tastet korrekt
+      // atpos tjekker om @ position er korrekt
+      // dotpos tjekker om det sidste . position er korrekt ift. @
+      var atpos = text.indexOf("@");
+      var dotpos = text.lastIndexOf(".");
+      // atpos < 1 sørger for at @ ikke må være første tegn i emailen. < 1 (less than one), altså 0, tjekker om  brugeren har tilføjet @ først
+      // dotpos < atpos + 2 sørger for, at . position må være efter @ symbolet.
+      // dotpos + 2 > text.length) undersøger om der er minimum 2 symboler efter det sidste .
+      if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 > text.length) {
+        alert("Indtast en gyldig e-mail.")
+        return false;
+      }
+      alert("Du er nu tilmeldt!")
+      return true;
+    }
+
+      </script>
+  <form name="anything" action="index.html" onsubmit="return validateEmail()" method="post">
+    Email: <input type="text" name="email" />
+    <input type="submit" value="Tilmeld!">
+
+  </form>
+  </body>
+</html>
